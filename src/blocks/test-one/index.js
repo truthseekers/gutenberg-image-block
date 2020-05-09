@@ -3,6 +3,7 @@ console.log("welll here we are in the other block");
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { RichText } from "@wordpress/editor";
+import { AlignmentToolbar, BlockControls } from "@wordpress/block-editor";
 
 
 // const blockStyle = {
@@ -24,35 +25,52 @@ registerBlockType('jsc-courses/test-one', {
         },
         bgColor: {
             type: 'string'
-        }
+        },
+        alignment: {
+            type: 'string',
+            default: 'none',
+        },
     },
-    edit: function ({ className, attributes, setAttributes }) {
+    //edit: function ({ className, attributes, setAttributes }) {
+    edit: function (props) {
         let blockStyle = {
-            backgroundColor: attributes.bgColor,
+            backgroundColor: props.attributes.bgColor,
         }
-        const { content } = attributes;
+        console.log(props);
+        const { content } = props.attributes;
+        const onChangeAlignment = (newAlignment) => {
+            console.log("new alignment. ");
+            props.setAttributes({ alignment: newAlignment });
+        };
         return <div style={blockStyle} className="background-wrapper">
+            <BlockControls>
+                <AlignmentToolbar
+                    value={props.attributes.alignment}
+                    onChange={onChangeAlignment}
+                />
+            </BlockControls>
             <RichText
                 tagName="p"
-                className={className}
+                className={props.className}
+                style={{ textAlign: props.attributes.alignment }}
                 onChange={(value) => {
-                    setAttributes({ content: value, bgColor: "green" })
+                    setAttributes({ content: value })
                     console.log("it works?");
                     console.log(attributes.bgColor);
                 }}
                 value={content}
-                formattingControls={['bold']}
+            // formattingControls={['bold']} // This... Property? Isn't in the documentation for some reason.
             />
             <RichText
                 tagName="p"
-                className={className}
+                className={props.className}
                 onChange={(value) => {
-                    setAttributes({ bgColor: value })
+                    props.setAttributes({ bgColor: value })
                     console.log("it works?");
                     console.log(value);
-                    console.log(attributes.bgColor);
+                    console.log(props.attributes.bgColor);
                 }}
-                value={attributes.bgColor}
+                value={props.attributes.bgColor}
                 formattingControls={['bold']}
             />
         </div>
