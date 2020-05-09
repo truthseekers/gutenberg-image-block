@@ -15,7 +15,7 @@
 
 register_block_type(
     'jsc-courses/custom-image',
-    array(
+    array( // Something is wrong here.
         'editor_script' => 'jsc-courses-editor-script',
         'editor_style' => 'jsc-courses-editor-style',
         'script' => 'jsc-courses-script',

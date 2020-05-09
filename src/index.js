@@ -1,3 +1,4 @@
+import './blocks/test-one';
 console.log("in the index.js of src in jsc-courses");
 import { registerBlockType, registerBlockStyle } from '@wordpress/blocks';
 import { __ } from "@wordpress/i18n";
