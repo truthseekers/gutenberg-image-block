@@ -36,7 +36,7 @@ function jsc_courses_block_register()
 
     wp_register_style(
         'jsc-courses-editor-style',
-        plugins_url('build/style.css', __FILE__),
+        plugins_url('style.css', __FILE__),
         array('wp-edit-blocks')
     );
 }

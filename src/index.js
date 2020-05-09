@@ -97,10 +97,70 @@ registerBlockType('jsc-courses/custom-image', {
     }
 });
 
-registerBlockStyle('jsc-courses/custom-image', {
-    name: 'fancy-quote',
-    label: 'Fancy Quote',
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ///////////////////
 
