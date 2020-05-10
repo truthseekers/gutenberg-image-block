@@ -1,10 +1,26 @@
-console.log("welll here we are in the other block");
+// console.log("welll here we are in the other block");
 
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
-import { RichText } from "@wordpress/editor";
-import { AlignmentToolbar, BlockControls } from "@wordpress/block-editor";
+import { RichText, InspectorControls } from "@wordpress/editor";
+import { AlignmentToolbar, BlockControls } from "@wordpress/block-editor"; // Test to see if InspectorControls works from here as well.
+import { PanelBody, ColorPicker, ColorPalette } from "@wordpress/components";
+import { withState } from '@wordpress/compose';
 
+const MyColorPicker = withState({
+    color: '#f00',
+})(({ color, setState }) => {
+    return (
+        <ColorPicker
+            color={color}
+            onChangeComplete={(value) => setState(value.hex)}
+            disableAlpha
+        />
+    );
+});
+
+
+// console.log(InspectorControls);
 
 // const blockStyle = {
 //     backgroundColor: '#900',
@@ -31,32 +47,58 @@ registerBlockType('jsc-courses/test-one', {
             default: 'none',
         },
     },
-    //edit: function ({ className, attributes, setAttributes }) {
     edit: function (props) {
+
+        const { attributes, setAttributes } = props;
+        const { content } = attributes;
+
         let blockStyle = {
-            backgroundColor: props.attributes.bgColor,
+            backgroundColor: attributes.bgColor,
         }
-        console.log(props);
-        const { content } = props.attributes;
+
         const onChangeAlignment = (newAlignment) => {
-            console.log("new alignment. ");
-            props.setAttributes({ alignment: newAlignment });
+            setAttributes({ alignment: newAlignment });
+        };
+        const onChangeColor = (newColor) => {
+            console.log("newColor: ", newColor);
+            setAttributes({ bgColor: newColor });
         };
         return <div style={blockStyle} className="background-wrapper">
+            <InspectorControls>
+                <PanelBody
+                    title={__('Background Color picker', 'jsc-courses')}
+                    initialOpen={true}
+                >
+                    <ColorPalette
+                        colors={[
+                            { color: '#f03' },
+                            { color: 'blue' },
+                        ]}
+                        onChange={onChangeColor}
+                    // onChange={(value) => console.log(value)}
+                    />
+                    {/* <ColorPicker
+                        color={attributes.bgColor}
+                        onChange={(value) => console.log(value)}
+                    // onChange={onChangeColor}
+                    /> */}
+                    {/* <MyColorPicker
+                        color="#00ff"
+                    /> */}
+                </PanelBody>
+            </InspectorControls>
             <BlockControls>
                 <AlignmentToolbar
-                    value={props.attributes.alignment}
+                    value={attributes.alignment}
                     onChange={onChangeAlignment}
                 />
             </BlockControls>
             <RichText
                 tagName="p"
                 className={props.className}
-                style={{ textAlign: props.attributes.alignment }}
+                style={{ textAlign: attributes.alignment }}
                 onChange={(value) => {
                     setAttributes({ content: value })
-                    console.log("it works?");
-                    console.log(attributes.bgColor);
                 }}
                 value={content}
             // formattingControls={['bold']} // This... Property? Isn't in the documentation for some reason.
@@ -65,12 +107,9 @@ registerBlockType('jsc-courses/test-one', {
                 tagName="p"
                 className={props.className}
                 onChange={(value) => {
-                    props.setAttributes({ bgColor: value })
-                    console.log("it works?");
-                    console.log(value);
-                    console.log(props.attributes.bgColor);
+                    setAttributes({ bgColor: value })
                 }}
-                value={props.attributes.bgColor}
+                value={attributes.bgColor}
                 formattingControls={['bold']}
             />
         </div>
