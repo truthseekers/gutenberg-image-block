@@ -4,30 +4,8 @@ import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { RichText, InspectorControls } from "@wordpress/editor";
 import { AlignmentToolbar, BlockControls } from "@wordpress/block-editor"; // Test to see if InspectorControls works from here as well.
-import { PanelBody, ColorPicker, ColorPalette } from "@wordpress/components";
+import { PanelBody, ColorPalette, RangeControl } from "@wordpress/components";
 import { withState } from '@wordpress/compose';
-
-const MyColorPicker = withState({
-    color: '#f00',
-})(({ color, setState }) => {
-    return (
-        <ColorPicker
-            color={color}
-            onChangeComplete={(value) => setState(value.hex)}
-            disableAlpha
-        />
-    );
-});
-
-
-// console.log(InspectorControls);
-
-// const blockStyle = {
-//     backgroundColor: '#900',
-//     color: '#fff',
-//     padding: '20px',
-// };
-
 
 // This is working even though its not registered in PHP. why?
 registerBlockType('jsc-courses/test-one', {
@@ -42,6 +20,12 @@ registerBlockType('jsc-courses/test-one', {
         bgColor: {
             type: 'string'
         },
+        fontColor: {
+            type: 'string'
+        },
+        fontSize: {
+            type: 'string'
+        },
         alignment: {
             type: 'string',
             default: 'none',
@@ -52,8 +36,12 @@ registerBlockType('jsc-courses/test-one', {
         const { attributes, setAttributes } = props;
         const { content } = attributes;
 
+
+
         let blockStyle = {
             backgroundColor: attributes.bgColor,
+            color: attributes.fontColor,
+            fontSize: attributes.fontSize,
         }
 
         const onChangeAlignment = (newAlignment) => {
@@ -63,28 +51,47 @@ registerBlockType('jsc-courses/test-one', {
             console.log("newColor: ", newColor);
             setAttributes({ bgColor: newColor });
         };
+        const onChangeFontColor = (newColor) => {
+            console.log("newColor: ", newColor);
+            setAttributes({ fontColor: newColor });
+        };
+        const onChangeFontSize = (newSize) => {
+            console.log("new FontSize: ", newSize);
+            setAttributes({ fontSize: newSize });
+        };
         return <div style={blockStyle} className="background-wrapper">
             <InspectorControls>
                 <PanelBody
-                    title={__('Background Color picker', 'jsc-courses')}
-                    initialOpen={true}
+                    title={__('Background Color picker hello', 'jsc-courses')}
+                    initialOpen={false}
                 >
+                    <RangeControl
+                        label="font size"
+                        min={6}
+                        max={48}
+                        onChange={onChangeFontSize}
+                        value={attributes.fontSize}
+                    />
                     <ColorPalette
                         colors={[
                             { color: '#f03' },
                             { color: 'blue' },
                         ]}
                         onChange={onChangeColor}
-                    // onChange={(value) => console.log(value)}
                     />
-                    {/* <ColorPicker
-                        color={attributes.bgColor}
-                        onChange={(value) => console.log(value)}
-                    // onChange={onChangeColor}
-                    /> */}
-                    {/* <MyColorPicker
-                        color="#00ff"
-                    /> */}
+                </PanelBody>
+                <PanelBody
+                    title={__('Font Color picker', 'jsc-courses')}
+                    initialOpen={true}
+                >
+                    {/* <MyColorPalette /> */}
+                    <ColorPalette
+                        colors={[
+                            { color: 'green' },
+                            { color: 'blue' },
+                        ]}
+                        onChange={onChangeFontColor}
+                    />
                 </PanelBody>
             </InspectorControls>
             <BlockControls>
@@ -103,18 +110,21 @@ registerBlockType('jsc-courses/test-one', {
                 value={content}
             // formattingControls={['bold']} // This... Property? Isn't in the documentation for some reason.
             />
-            <RichText
-                tagName="p"
-                className={props.className}
-                onChange={(value) => {
-                    setAttributes({ bgColor: value })
-                }}
-                value={attributes.bgColor}
-                formattingControls={['bold']}
-            />
         </div>
     },
     save: () => {
         return <div> dunno what to do</div>
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
