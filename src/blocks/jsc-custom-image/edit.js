@@ -1,8 +1,8 @@
 import { Component } from "@wordpress/element";
 import {
-    MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck,
-    InspectorControls,
+    MediaPlaceholder, MediaUpload, MediaUploadCheck, InspectorControls, BlockControls
 } from "@wordpress/editor";
+// import { InspectorControls, BlockControls, BlockEditorProvider } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from '@wordpress/blob';
 import { withSelect } from "@wordpress/data";
