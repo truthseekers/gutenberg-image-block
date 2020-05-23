@@ -1,12 +1,17 @@
 import { Component } from "@wordpress/element";
 import {
-    MediaPlaceholder, MediaUpload, MediaUploadCheck, InspectorControls, BlockControls
+    MediaPlaceholder
 } from "@wordpress/editor";
-// import { InspectorControls, BlockControls, BlockEditorProvider } from "@wordpress/block-editor";
+// import { InspectorControls, BlockControls, BlockEditorProvider } from "@wordpress/block-editor"; // Why won't this work?
+var InspectorControls = wp.blockEditor.InspectorControls; // I have to do this for some reason
+var BlockControls = wp.blockEditor.BlockControls;
+var MediaUpload = wp.blockEditor.MediaUpload;
+var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from '@wordpress/blob';
 import { withSelect } from "@wordpress/data";
-import { Spinner, withNotices, Toolbar, IconButton, PanelBody, TextareaControl, SelectControl } from "@wordpress/components";
+import { Spinner, withNotices, Toolbar, PanelBody, TextareaControl, SelectControl } from "@wordpress/components";
+var IconButton = wp.components.Button; // formerly in @wordpress/components
 import { useState, useEffect } from "@wordpress/element";
 
 

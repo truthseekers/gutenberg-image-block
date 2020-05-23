@@ -6,6 +6,7 @@ import edit from "./edit";
 import { RichText } from "@wordpress/editor";
 import { Dashicon } from "@wordpress/components";
 
+
 const attributes = {
     id: {
         type: 'number'
