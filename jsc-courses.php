@@ -20,26 +20,8 @@ register_block_type(
 );
 
 
-// copied...
-
-register_block_type(
-    'jsc-courses/custom-image',
-    array( // Something is wrong here.
-        'editor_script' => 'jsc-courses-editor-script',
-        'editor_style' => 'jsc-courses-editor-style',
-        'script' => 'jsc-courses-script',
-        'style' => 'jsc-courses-style'
-    ),
-    array()
-);
-
-
 function jsc_courses_block_register()
 {
-    // die(var_dump(plugins_url(__DIR__) . '/src/blocks/jsc-custom-image/frontend.js'));
-    // wp_enqueue_script('frontendjsc', plugins_url(__DIR__) . '/src/blocks/jsc-custom-image/frontend.js', array('jquery'), null, true);
-
-
     wp_register_script(
         'jsc-courses-editor-script',
         plugins_url('build/index.js', __FILE__), // This use to be the src/editor.js but webpack.
@@ -126,6 +108,7 @@ function gutenberg_examples_01_register_block()
         //filemtime(plugin_dir_path(__FILE__) . 'editor.css')
     );
 
+    // die(var_dump(plugins_url('style.css', __FILE__)));
     wp_register_style(
         'gutenberg-examples-02',
         plugins_url('style.css', __FILE__),
@@ -143,51 +126,3 @@ function gutenberg_examples_01_register_block()
 
 
 add_action('init', 'gutenberg_examples_01_register_block');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function myguten_stylesheet()
-// {
-//     wp_enqueue_style('myguten-style', plugins_url('style.css', __FILE__));
-// }
-
-// add_action('enqueue_block_assets', 'myguten_stylesheet');
-
-
-
-
-// function jsc_courses_enqueue()
-// {
-
-
-//     // What is the difference between wp_enqueue_script and the other?
-//     wp_enqueue_script(
-//         'jsc-courses-script',
-//         plugins_url('build/index.js', __FILE__)
-//         //, array('wp-blocks') not necessary because using wp-scripts
-//     );
-// }
-
-
-
-// not sure if I even need the below script
-//add_action('enqueue_block_editor_assets', 'jsc_courses_enqueue');
