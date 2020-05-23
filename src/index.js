@@ -3,6 +3,8 @@ console.log("in the index.js of src in jsc-courses");
 import { registerBlockType, registerBlockStyle } from '@wordpress/blocks';
 import { __ } from "@wordpress/i18n";
 import './blocks/ext-image';
+import './blocks/jsc-custom-image';
+
 
 // import './styles.editor.scss';
 // import './style.scss';

@@ -1,4 +1,3 @@
-console.log("ext-image yo");
 
 import { registerBlockType } from '@wordpress/blocks';
 import { addFilter } from "@wordpress/hooks";
