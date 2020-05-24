@@ -1,11 +1,10 @@
 import { Component } from "@wordpress/element";
-import {
-    MediaPlaceholder
-} from "@wordpress/editor";
+
 // import { InspectorControls, BlockControls, BlockEditorProvider } from "@wordpress/block-editor"; // Why won't this work?
 var InspectorControls = wp.blockEditor.InspectorControls; // I have to do this for some reason
 var BlockControls = wp.blockEditor.BlockControls;
 var MediaUpload = wp.blockEditor.MediaUpload;
+var MediaPlaceholder = wp.blockEditor.MediaPlaceholder;
 var MediaUploadCheck = wp.blockEditor.MediaUploadCheck;
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from '@wordpress/blob';
@@ -29,16 +28,8 @@ function JscImage2Edit(props) {
                 alt: ''
             })
         }
-
-        // // componentDidUpdate(prevProps) {}
-        // if(prevProps.isSelected && !props.isSelected) {
-        //     this.setState({
-        //         selectedLink: null
-        //     })
-        // }
     })
 
-    // render() {
     const { className, attributes, noticeUI, isSelected } = props;
     const { url, alt, id } = attributes;
 
@@ -177,17 +168,17 @@ function JscImage2Edit(props) {
                     />
                 }
                 {/* {this.state.isLightbox &&} */}
-                <div className={"outer"}>
+                {/* <div className={"outer"}>
                     <div className="outerCenter">
                         <div className="outerx">
                             <span onClick={logStuff} className="close">&times;</span>
                             {/* <span className="x">X</span> */}
-                        </div>
+                {/* </div>
                         <div className="first">
                             <img className={""} onClick={logStuff} src={url} alt={alt} />
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* } */}
                 {/* {isBlobURL(url) && <Spinner />} */}
             </div>

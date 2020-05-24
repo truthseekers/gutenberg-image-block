@@ -1,4 +1,4 @@
-        body {
+        /* body {
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -32,7 +32,7 @@
         }
 
         /* The Modal (background) */
-        .modal {
+        /* .modal {
             display: flex;
             background-color: yellow;
             position: absolute;
@@ -40,43 +40,43 @@
             width: 100vw;
             height: 100vh;
             /* Black w/ opacity */
-        }
+        } */
 
         /* Modal Content */
-        .modal-content {
+        /* .modal-content { */
             /* background-color: rgba(70, 50, 218, 0.64); */
-            background-color: hotpink;
+            /* background-color: hotpink;
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80vw;
+            width: 80vw; */
             /*position: fixed; */
-            justify-content: flex-end;
-        }
+            /* justify-content: flex-end;
+        } */
 
-        .restrictor {
+        /* .restrictor {
             width: 35%;
             text-align: center;
-        }
+        } */
 
         /* The Close Button */
-        .close {
-            color: #aaaaaa;
+        /* .close {
+            color: #aaaaaa; */
             /* float: right; */
-            font-size: 28px;
+            /* font-size: 28px;
             font-weight: bold;
-        }
+        } */
 
-        .close:hover,
+        /* .close:hover,
         .close:focus {
             color: #000;
             text-decoration: none;
             cursor: pointer;
         }
 
-        .outer {
+        .outer { */
             /* display: flex; */
-            display:none;
+            /* display:none;
             background: rgba(0, 0, 0, 0.6);
             padding: 10px;
             justify-content: center;
@@ -96,22 +96,22 @@
             flex-direction: column;
         }
 
-        .outerx {
+        .outerx { */
             /* background: lightpink; */
             /* padding: 10px; */
-            margin: 5px;
+            /* margin: 5px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; */
             /* display: inline-block; */
-        }
+        /* } */
 
-        .first {
+        /* .first { */
             /* background: hotpink; */
             /* padding: 5px; */
-            display: flex;
-        }
+            /* display: flex;
+        } */
 
-        .incenter {
+        /* .incenter {
             background: lightblue;
             padding: 20px;
-        }
+        } */

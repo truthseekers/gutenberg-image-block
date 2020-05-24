@@ -8,5 +8,9 @@ jQuery(document).ready(function ($) {
         this.nextSibling.style.display = "flex";
     })
 
+    $('.outer').click(function () {
+        this.style.display = "none";
+    })
+
 
 });

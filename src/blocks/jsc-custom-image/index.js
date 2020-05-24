@@ -52,7 +52,6 @@ registerBlockType('jsc-courses/jsc-custom-image', {
                     <div className="outercenter">
                         <div className="outerx">
                             <span className="close">&times;</span>
-                            {/* <span className="x">X</span>*/}
                         </div>
                         <div className="first">
                             <img className={"jsc-lightbox"} src={url} alt={alt} />
