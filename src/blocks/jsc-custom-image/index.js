@@ -1,11 +1,21 @@
 // import './style.editor.css';
 // import './style.css';
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType, registerBlockStyle } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import edit from "./edit";
 import { RichText } from "@wordpress/editor";
 import { Dashicon } from "@wordpress/components";
 
+registerBlockStyle('jsc-courses/jsc-custom-image', {
+    name: 'jsc-lightbox',
+    label: 'Simple Lightbox',
+    isDefault: true
+});
+
+registerBlockStyle('jsc-courses/jsc-custom-image', {
+    name: 'no-style',
+    label: 'None'
+});
 
 const attributes = {
     id: {
@@ -25,6 +35,8 @@ const attributes = {
         attribute: 'src',
     },
 }
+
+
 
 registerBlockType('jsc-courses/jsc-custom-image', {
     title: __('JSC Custom Image', 'jsc-courses'),
@@ -47,7 +59,7 @@ registerBlockType('jsc-courses/jsc-custom-image', {
         const { title, info, url, alt, id, social } = attributes;
         return (
             <div>
-                <img src={url} id={id} alt={alt} className={id ? `jsc-lightbox-img wp-image-${id}` : null} />
+                <img src={url} id={id} alt={alt} className={`jsc-lightbox-img wp-image-${id}`} />
                 <div className={"outer"}>
                     <div className="outercenter">
                         <div className="outerx">

@@ -45,6 +45,7 @@ function JscImage2Edit(props) {
     }
 
     const onSelectURL = (url) => {
+
         props.setAttributes({
             url,
             id: null,
