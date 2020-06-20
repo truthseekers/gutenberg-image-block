@@ -1,1 +1,5 @@
-import './blocks/jsc-custom-image';
+console.log("confusing");
+import './blocks/course';
+
+
+import { registerBlockType } from '@wordpress/blocks';
